@@ -1,5 +1,6 @@
 package com.digitalinnovationone.beerstock.entity;
 
+import com.digitalinnovationone.beerstock.enums.BeerType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
