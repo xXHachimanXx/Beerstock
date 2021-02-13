@@ -5,6 +5,7 @@ import com.digitalinnovationone.beerstock.entity.Beer;
 import com.digitalinnovationone.beerstock.exception.BeerAlreadyRegisteredException;
 import com.digitalinnovationone.beerstock.exception.BeerNotFoundException;
 import com.digitalinnovationone.beerstock.exception.BeerStockExceededException;
+import com.digitalinnovationone.beerstock.mapper.BeerMapper;
 import com.digitalinnovationone.beerstock.repository.BeerRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,7 @@ public class BeerService {
         verifyIfIsAlreadyRegistered(beerDTO.getName());
         Beer beer = beerMapper.toModel(beerDTO);
         Beer savedBeer = beerRepository.save(beer);
+
         return beerMapper.toDTO(savedBeer);
     }
 
