@@ -1,21 +1,27 @@
 package com.digitalinnovationone.beerstock.service;
 
+import com.digitalinnovationone.beerstock.dto.BeerDTO;
 import com.digitalinnovationone.beerstock.entity.Beer;
+import com.digitalinnovationone.beerstock.exception.BeerAlreadyRegisteredException;
+import com.digitalinnovationone.beerstock.exception.BeerNotFoundException;
+import com.digitalinnovationone.beerstock.exception.BeerStockExceededException;
 import com.digitalinnovationone.beerstock.repository.BeerRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
-@Service
+@Service // Classe gerenciada pelo spring
 @AllArgsConstructor(onConstructor = @__(@Autowired))
 public class BeerService {
 
     private final BeerRepository beerRepository;
     private final BeerMapper beerMapper = BeerMapper.INSTANCE;
     
-    public BeerDIO createBeer(BeerDIO beerDIO) throws BeerAlreadyRegisteredException
+    public BeerDTO createBeer(BeerDTO beerDTO) throws BeerAlreadyRegisteredException
     {
         verifyIfIsAlreadyRegistered(beerDTO.getName());
         Beer beer = beerMapper.toModel(beerDTO);
