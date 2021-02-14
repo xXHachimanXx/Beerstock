@@ -15,7 +15,7 @@ import java.util.List;
 @RestController
 @AllArgsConstructor(onConstructor = @__(@Autowired))
 @RequestMapping("/api/v1/beers")
-public class BeerController implements BeerControllerDccs {
+public class BeerController implements BeerControllerDocs {
     private final BeerService beerService;
 
     @PostMapping
